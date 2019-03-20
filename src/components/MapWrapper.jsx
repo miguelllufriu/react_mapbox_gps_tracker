@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
+import { DataListWrapper } from './DataListWrapper';
 
 
-export function MapWrapper() {
+export const MapWrapper = () => {
     
     const TOKEN = process.env.REACT_APP_MAPBOX_API_KEY;
     
@@ -15,10 +16,13 @@ export function MapWrapper() {
       });
 
     return (
-        <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={TOKEN}
-        onViewportChange={(viewport) => useViewport({...viewport})}
-        />
+        <div>
+            <DataListWrapper />
+            <ReactMapGL
+                {...viewport}
+                mapboxApiAccessToken={TOKEN}
+                onViewportChange={(viewport) => useViewport({...viewport})}
+            />
+        </div>
     );
 }
